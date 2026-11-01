@@ -19,12 +19,18 @@ function Prop.Attach(character, template, options)
     local attachmentName = options.Name or "HeldProp"
     local previous = character:FindFirstChild(attachmentName)
     if previous then previous:Destroy() end
+    local staleMotor = arm:FindFirstChild("R6HandGrip")
+    if staleMotor and staleMotor:IsA("Motor6D") then staleMotor:Destroy() end
 
     local item = template:Clone()
     item.Name = attachmentName
     local grip = item:FindFirstChild("GripPart", true)
     assert(grip and grip:IsA("BasePart"), "Template sem BasePart chamada GripPart")
     item.Parent = character
+    local offset = options.C0 or DEFAULT_OFFSET
+    -- Mova o modelo INTEIRO, preservando a posição relativa de suas peças.
+    local worldShift = (arm.CFrame * offset) * grip.CFrame:Inverse()
+    item:PivotTo(worldShift * item:GetPivot())
 
     for _, part in item:GetDescendants() do
         if part:IsA("BasePart") then
@@ -43,8 +49,6 @@ function Prop.Attach(character, template, options)
         end
     end
 
-    local offset = options.C0 or DEFAULT_OFFSET
-    grip.CFrame = arm.CFrame * offset
     local motor = Instance.new("Motor6D")
     motor.Name = "R6HandGrip"
     motor.Part0 = arm
