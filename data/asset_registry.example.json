@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "purpose": "Exemplo de registro: não implica que o binário esteja arquivado",
+  "assets": [
+    {
+      "key": "studio-legacy/coffee-hold-r6",
+      "kind": "roblox-animation",
+      "roblox_asset_id": "135391868063277",
+      "project": "Studio Legacy",
+      "rig": "R6",
+      "function": "Segurar a xícara na mão direita durante a rotina de café",
+      "loop": true,
+      "status": "referencia-documentada",
+      "verified_in_studio": false
+    },
+    {
+      "key": "studio-legacy/book-page-turn-r6",
+      "kind": "roblox-animation",
+      "roblox_asset_id": "95432586788785",
+      "project": "Studio Legacy",
+      "rig": "R6",
+      "function": "Virar uma página; duração aproximada de 1,3 s",
+      "loop": false,
+      "status": "referencia-documentada",
+      "verified_in_studio": false
+    }
+  ],
+  "image_example": {
+    "file": "icons/book-open.svg",
+    "kind": "vector-icon",
+    "authorship": "original-this-repository",
+    "license": "consultar-proprietario",
+    "verified_in_studio": false
+  }
+}
